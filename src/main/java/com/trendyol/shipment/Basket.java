@@ -12,7 +12,7 @@ public class Basket {
     }
 
     public ShipmentSize getShipmentSize() {
-        return shipmentSizeCalculatorService.calculateShipmentSize(products);
+        return shipmentSizeCalculatorService.calculateShipmentSize(getProducts());
     }
 
     public List<Product> getProducts() {
