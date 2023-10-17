@@ -5,14 +5,14 @@ import java.util.List;
 public class Basket {
 
     private List<Product> products;
-    private final ShipmentSizeService shipmentSizeService;
+    private final ShipmentSizeCalculatorService shipmentSizeCalculatorService;
 
-    public Basket(ShipmentSizeService shipmentSizeService) {
-        this.shipmentSizeService = shipmentSizeService;
+    public Basket(ShipmentSizeCalculatorService shipmentSizeCalculatorService) {
+        this.shipmentSizeCalculatorService = shipmentSizeCalculatorService;
     }
 
     public ShipmentSize getShipmentSize() {
-        return shipmentSizeService.calculateShipmentSize(products);
+        return shipmentSizeCalculatorService.calculateShipmentSize(products);
     }
 
     public List<Product> getProducts() {

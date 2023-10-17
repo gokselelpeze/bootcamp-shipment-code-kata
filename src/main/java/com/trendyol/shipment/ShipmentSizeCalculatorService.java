@@ -7,9 +7,9 @@ import java.util.Optional;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
-public class ShipmentSizeService {
+public class ShipmentSizeCalculatorService {
 
-    private static final int THRESHOLD = 3;
+    private static final int BASKET_SHIPMENT_SIZE_THRESHOLD = 3;
 
     public ShipmentSize calculateShipmentSize(List<Product> products) {
 
@@ -21,7 +21,7 @@ public class ShipmentSizeService {
     }
 
     private boolean isProductCountBelowThreshold(List<Product> products) {
-        return products.size() < THRESHOLD;
+        return products.size() < BASKET_SHIPMENT_SIZE_THRESHOLD;
     }
 
     private ShipmentSize getBiggestShipmentSize(List<Product> products) {
@@ -42,7 +42,7 @@ public class ShipmentSizeService {
                 .map(Product::getSize)
                 .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()))
                 .entrySet().stream()
-                .filter(entry -> entry.getValue() >= THRESHOLD)
+                .filter(entry -> entry.getValue() >= BASKET_SHIPMENT_SIZE_THRESHOLD)
                 .map(Map.Entry::getKey)
                 .max(Enum::compareTo);
     }

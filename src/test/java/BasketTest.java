@@ -1,7 +1,7 @@
 import com.trendyol.shipment.Basket;
 import com.trendyol.shipment.Product;
 import com.trendyol.shipment.ShipmentSize;
-import com.trendyol.shipment.ShipmentSizeService;
+import com.trendyol.shipment.ShipmentSizeCalculatorService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -24,8 +24,8 @@ class BasketTest {
 
     @BeforeEach
     void setUp() {
-        ShipmentSizeService shipmentSizeService = new ShipmentSizeService();
-        basket = new Basket(shipmentSizeService);
+        ShipmentSizeCalculatorService shipmentSizeCalculatorService = new ShipmentSizeCalculatorService();
+        basket = new Basket(shipmentSizeCalculatorService);
     }
 
     @ParameterizedTest
